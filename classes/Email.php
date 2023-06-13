@@ -22,11 +22,11 @@ class Email {
          // create a new object
          $mail = new PHPMailer();
          $mail->isSMTP();
-         $mail->Host = $_ENV['EMAIL_HOST'];
+         $mail->Host = $_ENV['smtp-relay.sendinblue.com'];
          $mail->SMTPAuth = true;
-         $mail->Port = $_ENV['EMAIL_PORT'];
-         $mail->Username = $_ENV['EMAIL_USER'];
-         $mail->Password = $_ENV['EMAIL_PASS'];
+         $mail->Port = $_ENV['587'];
+         $mail->Username = $_ENV['cs.danieljl@gmail.com'];
+         $mail->Password = $_ENV['290fA534BKh68wTd'];
      
          $mail->setFrom('cuentas@devwebcamp.com');
          $mail->addAddress($this->email, $this->nombre);
@@ -38,7 +38,7 @@ class Email {
 
          $contenido = '<html>';
          $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has Registrado Correctamente tu cuenta en Digitalis; pero es necesario confirmarla</p>";
-         $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";       
+         $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "cursosdigitalis.alwaysdata.net/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";       
          $contenido .= "<p>Si tu no creaste esta cuenta; puedes ignorar el mensaje</p>";
          $contenido .= '</html>';
          $mail->Body = $contenido;
